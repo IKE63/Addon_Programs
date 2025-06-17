@@ -1,0 +1,18 @@
+ALTER TABLE students_details
+ADD Gender varchar(6);
+update students_details set Gender = "Male" where Name = "Ishaq";
+update students_details set Gender = "Male" where Name = "Krishnan";
+update students_details set Gender = "Female" where Name = "Kanika";
+update students_details set Gender = "Male" where Name = "Mahesh Babu";
+update students_details set Gender = "Male" where Name = "Sakthivel";
+
+SELECT* from students_details;
+
+
+
+ALTER table students_details 
+DROP COLUMN Section;
+
+TRUNCATE table students_details;
+
+DROP DATABASE Student;

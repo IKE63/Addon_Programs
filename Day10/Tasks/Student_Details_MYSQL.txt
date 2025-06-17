@@ -1,0 +1,11 @@
+use Student;
+Create table Students_details(
+    id int, Name varchar(20), Marks int, Department varchar(25), Section char(2));
+    INSERT INTO students_details values
+    (1, "Ishaq", 79, 'Information Technology', 'B'),
+    (2, "Abhinav", 64, 'Computer Science', 'B'),
+    (3, "Kanika", 98, 'Computer Science', 'A'),
+    (4, "Mahesh Babu", 55, 'Information Technology', 'B'),
+    (5, "Sakthivel", 91, 'Information Technology', 'A');
+    select * from students_details;
+

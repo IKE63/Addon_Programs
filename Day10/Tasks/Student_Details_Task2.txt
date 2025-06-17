@@ -1,0 +1,6 @@
+UPDATE students_details
+set name = "Krishnan" where id=2;
+
+select* from students_details where Marks<60;
+
+select Name, Department, Section from students_details;
