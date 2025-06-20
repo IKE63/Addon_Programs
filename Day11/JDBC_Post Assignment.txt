@@ -1,0 +1,62 @@
+package Connect;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class JDBC {
+
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        inventory(); 
+    }
+
+    public static void inventory() throws ClassNotFoundException, SQLException {
+       
+        Class.forName("com.mysql.jdbc.Driver");
+
+        
+        String url = "jdbc:mysql://localhost:3306/JDBC";
+        String userName = "root";
+        String password = "Athiri-2025";
+
+        
+        Connection con = DriverManager.getConnection(url, userName, password);
+        Statement stmt = con.createStatement();
+
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS student (id INT, name VARCHAR(25), age INT)";
+        stmt.executeUpdate(createTableQuery);
+        System.out.println("Table created (if not exists)");
+
+        // 2. Insert Data
+        String insertQuery = "INSERT INTO student VALUES (1, 'Ishaq', 20), (2, 'Nikash', 19), (3, 'Sanjay', 20)";
+        stmt.executeUpdate(insertQuery);
+        System.out.println("Data inserted");
+
+        // 3. Delete a record
+        String deleteQuery = "DELETE FROM student WHERE id = 2";
+        stmt.executeUpdate(deleteQuery);
+        System.out.println(" Data with id=2 deleted");
+
+        // 4. Retrieve all data
+        String selectQuery = "Select * FROM student";
+        ResultSet rs = stmt.executeQuery(selectQuery);
+
+        System.out.println("\n Student Table Data:");
+        System.out.println("ID\tName\t\tAge");
+        System.out.println("---------------------------");
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            String name = rs.getString("name");
+            int age = rs.getInt("age");
+            System.out.println(id + " " + name + " " + age);
+        }
+
+        // Close resources
+        rs.close();
+        stmt.close();
+        con.close();
+        System.out.println(" All operations completed.");
+    }
+}
